@@ -1,0 +1,12 @@
+<!-- ko if: (initialQty() < maxQty) &&  (displayDiscount() != 0) -->
+<div class="discount-message">
+    <!-- ko i18n: 'Buy' --><!-- /ko -->
+    <!-- ko text: displayQty() --><!-- /ko -->
+    <!-- ko i18n: 'more to get ' --><!-- /ko -->
+    <!-- ko text: displayDiscount() --><!-- /ko -->
+    <!-- ko i18n: '% on ' --><!-- /ko -->
+    <!-- ko text: productDiscountTypeValue --><!-- /ko -->
+</div>
+<!-- /ko -->
+
+
