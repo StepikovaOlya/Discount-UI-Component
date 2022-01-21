@@ -1,0 +1,34 @@
+<?php
+/**
+ *
+ * @var Block\CustomerData\CartData $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+
+$product = $block->view->getProduct();
+$defaultQty = $block->view->getProductDefaultQty();
+$discountTierData = $block->getAllDiscountsData();
+?>
+
+<div id="discount-message" data-bind="scope: 'discountMessage'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "discountMessage": {
+                        "component": "js/discount-message",
+                        "productDiscountType": "<?= $product->getData('product_type_discount') ?>",
+                        "productDiscountTypeValue": "<?= $escaper->escapeHtml($product->getAttributeText('product_type_discount')) ?>",
+                        "productQty": "<?= $escaper->escapeHtml($defaultQty) * 1 ?>",
+                        "discountTierData": "<?= $escaper->escapeHtml($discountTierData) ?>"
+                    }
+                }
+            }
+        }
+    }
+</script>
